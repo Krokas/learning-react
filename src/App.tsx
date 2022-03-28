@@ -3,17 +3,34 @@ import './App.css';
 import ItemList from './ItemList';
 import Form from './Form';
 import INoteList from './shared/interfaces/NoteList.interface';
+import { CONSTANTS } from './shared/constants'
 
 
 class App extends React.Component<any, INoteList> {
   constructor(props: any) {
     super(props);
+    this.state = {notes: this.getLocalStorageNotes()};
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.state = {notes: []};
   }
 
   handleFormSubmit(note: string) {
+    const notes = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
+    if (notes) {
+      localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY, `${notes}${CONSTANTS.LOCAL_STORAGE_SEPARATOR}${note}`);
+    } else {
+      localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY, note)
+    }
     this.setState({notes: [...this.state.notes, note]});
+  }
+
+  getLocalStorageNotes() : string[] {
+    const notes = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
+    let noteArray : string[] = [];
+    if (notes) {
+      noteArray = notes.split(CONSTANTS.LOCAL_STORAGE_SEPARATOR);
+    }
+
+    return noteArray;
   }
   
   render() {
