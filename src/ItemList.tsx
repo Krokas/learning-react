@@ -1,12 +1,15 @@
 import React from 'react';
 import Item from './Item';
-import IItemListProps from './shared/interfaces/ItemListProps.interface';
+import INoteList from './shared/interfaces/NoteList.interface';
 
-class ItemList extends React.Component<IItemListProps> {
+
+class ItemList extends React.Component<INoteList> {
     render() {
         return (
             <div>
-                {this.props.items.map(item => <Item {...item} />)}
+                {this.props.notes.map((item, index) => 
+                    <Item key={index} note={item} />)
+                }
             </div>
         )
     }

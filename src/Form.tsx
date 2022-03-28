@@ -1,20 +1,30 @@
 import React from 'react';
+import INote from './shared/interfaces/Note.interface';
 
-class Form extends React.Component {
-    state = {
-        newNote: ''
-    };
+
+interface IProps {
+    onFormSubmit: (note: string) => void
+}
+
+class Form extends React.Component<IProps, INote> {
+    constructor(props: IProps) {
+        super(props);
+        this.state = {note: ''}
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(this.state.newNote);
-        this.setState({ newNote: '' })
+        this.setState({ note: '' })
+        this.props.onFormSubmit(this.state.note)
     }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <input type="text"
-                    value={this.state.newNote}
-                    onChange={event => this.setState({newNote: event.target.value})}
+                    value={this.state.note}
+                    onChange={event => this.setState({note: event.target.value})}
                     placeholder="New note"
                     required />
                 <input type="submit" value="Add" />

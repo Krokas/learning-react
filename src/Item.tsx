@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import IItemProps from './shared/interfaces/ItemProps.interface'
+import INote from './shared/interfaces/Note.interface';
 
-class Item extends Component<IItemProps> {
+class Item extends Component<INote> {
     render() {
-        const itemData = this.props;
         return (
             <div>
-                {itemData.value}
+                {this.props.note}
             </div>
         )
     }
