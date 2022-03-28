@@ -4,8 +4,24 @@
     background-color: var(--white);
     border: 1px solid transparent;
     border-radius: 0.5rem;
+    display: flex;
 }
 
 .Item:not(:last-child) {
     margin: 0 0 0.5rem;
+}
+
+.Item > span {
+    flex: 1 1;
+    margin: auto;
+}
+
+.Item > button {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--green);
+    border-radius: 25rem;
+    background-color: var(--green);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
