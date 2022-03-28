@@ -1,0 +1,26 @@
+.Form {
+    display: flex;
+    border-radius: 25rem;
+    border: 1px solid var(--grey);
+    overflow: hidden;
+}
+
+.Form > input[type="text"] {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+    flex: 1 1;
+}
+
+.Form > input[type="text"]:active,
+.Form > input[type="text"]:focus {
+    outline: none;
+}
+
+.Form > input[type="submit"] {
+    border: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--green);
+    cursor: pointer;
+    font-weight: 600;
+}

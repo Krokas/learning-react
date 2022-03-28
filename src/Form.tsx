@@ -1,5 +1,6 @@
 import React from 'react';
 import INote from './shared/interfaces/Note.interface';
+import './Form.css'
 
 
 interface IProps {
@@ -21,7 +22,7 @@ class Form extends React.Component<IProps, INote> {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="Form">
                 <input type="text"
                     value={this.state.note}
                     onChange={event => this.setState({note: event.target.value})}
