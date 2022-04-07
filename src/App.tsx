@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import ItemList from 'components/ItemList/ItemList.component';
-import Form from './Form';
+import Form from './components/Form/Form.component';
 import INoteList from './shared/interfaces/NoteList.interface';
 import { CONSTANTS } from './shared/constants'
 
