@@ -1,5 +1,5 @@
 
-import {TItem} from 'types/Note';
+import {TItem} from 'types/Item';
 import './item.css';
 
 const Item: React.FC<TItem> = ({note}) => {

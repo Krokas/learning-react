@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ItemList from './ItemList';
+import ItemList from 'components/ItemList/ItemList.component';
 import Form from './Form';
 import INoteList from './shared/interfaces/NoteList.interface';
 import { CONSTANTS } from './shared/constants'
