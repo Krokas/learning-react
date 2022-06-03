@@ -22,4 +22,15 @@ const addLocalStorageNote = (note: string) => {
   }
 };
 
-export { getLocalStorageNotes, addLocalStorageNote };
+const removeLocalStorageNote = (note: string): string[] => {
+  const notes: string[] = getLocalStorageNotes();
+  const index: number = notes.indexOf(note);
+  notes.splice(index, 1);
+  localStorage.setItem(
+    CONSTANTS.LOCAL_STORAGE_KEY,
+    notes.join(CONSTANTS.LOCAL_STORAGE_SEPARATOR)
+  );
+  return notes;
+};
+
+export { getLocalStorageNotes, addLocalStorageNote, removeLocalStorageNote };

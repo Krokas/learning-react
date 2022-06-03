@@ -2,15 +2,11 @@
 import {TItem} from 'types/Item';
 import './item.css';
 
-const Item: React.FC<TItem> = ({note}) => {
-    const handleClick = () => {
-        console.log('click')
-    }
-
+const Item: React.FC<TItem> = ({note, onRemoveItem}) => {
     return (
         <div className="Item">
             <span>{note}</span>
-            <button onClick={() => handleClick()}>Done!</button>
+            <button onClick={() => onRemoveItem(note)}>Done!</button>
         </div>
     )
 }
