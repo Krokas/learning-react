@@ -1,0 +1,57 @@
+.Edit {
+  height: calc(100vh - 4rem);
+  position: absolute;
+  top: 0;
+  right: -30rem;
+  width: calc(30rem - 4rem);
+  background-color: var(--white);
+  box-shadow: 0px 0px 3px 0px var(--grey);
+  transition: all 0.5s ease;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.Overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--grey);
+  opacity: 0.3;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.Visible {
+  visibility: visible;
+}
+
+.Control {
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+.Control > label {
+  width: 100%;
+  display: block;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.Control > input[type="text"],
+.Control > input[type="date"] {
+  padding: 1rem;
+  font-size: inherit;
+  border: 1px solid var(--grey);
+}
+
+.Control > input[type="text"] {
+  width: calc(100% - 2rem);
+}
+
+.Open {
+  right: 0;
+}

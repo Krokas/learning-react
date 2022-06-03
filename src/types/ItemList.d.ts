@@ -1,4 +1,5 @@
 export type TItemList = {
-  notes: TItem[];
-  onRemoveItem: (item: string) => void;
+  items: TItem[];
+  onRemoveItem?: (item: string) => void;
+  onEditItem?: (item: TItem, index: number) => void;
 };

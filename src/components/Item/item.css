@@ -1,10 +1,11 @@
 .Item {
   margin: 0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
   background-color: var(--white);
   border: 1px solid transparent;
-  border-radius: 0.5rem;
+  border-radius: 25rem;
   display: flex;
+  justify-content: space-between;
 }
 
 .Item:not(:last-child) {
@@ -16,12 +17,20 @@
   margin: auto;
 }
 
-.Item > button {
-  padding: 0.2rem 0.5rem;
+.Item > .ItemRemove {
+  padding: 0.5rem 1rem;
   border: 1px solid var(--green);
   border-radius: 25rem;
   background-color: var(--green);
   cursor: pointer;
   font-weight: 600;
   font-size: 0.8rem;
+}
+
+.Item > .ItemLabel {
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
 }

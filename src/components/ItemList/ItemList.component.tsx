@@ -2,15 +2,21 @@ import Item from "components/Item/Item.component";
 import { TItemList } from "types/ItemList";
 import "./itemList.css";
 
-const ItemList: React.FC<TItemList> = ({ notes, onRemoveItem }) => {
+const ItemList: React.FC<TItemList> = ({ items, onRemoveItem, onEditItem }) => {
   return (
     <>
-      {notes.length > 0 && (
+      {items.length > 0 && onEditItem && (
         <>
           <h2>Notes</h2>
           <div className="ItemList">
-            {notes.map((item, index) => (
-              <Item key={index} note={item} onRemoveItem={onRemoveItem} />
+            {items.map((item, index) => (
+              <Item
+                key={index}
+                note={item.note}
+                dueDate={item.dueDate}
+                onRemoveItem={onRemoveItem}
+                onEditItem={() => onEditItem(item, index)}
+              />
             ))}
           </div>
         </>

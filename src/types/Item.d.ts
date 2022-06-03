@@ -1,4 +1,6 @@
 export type TItem = {
   note: string;
-  onRemoveItem: (value: string) => void;
+  dueDate?: Date;
+  onRemoveItem?: (value: string) => void;
+  onEditItem?: (item: TItem, index: number) => void;
 };

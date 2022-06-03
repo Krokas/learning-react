@@ -1,36 +1,41 @@
 import { CONSTANTS } from "shared/constants";
+import { TItem } from "types/Item";
 
-const getLocalStorageNotes = (): string[] => {
-  const notes = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
-  let noteArray: string[] = [];
-  if (notes) {
-    noteArray = notes.split(CONSTANTS.LOCAL_STORAGE_SEPARATOR);
+const getLocalStorageNotes = (): TItem[] => {
+  const items = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
+  let itemArray: TItem[] = [];
+  if (items) {
+    itemArray = items
+      .split(CONSTANTS.LOCAL_STORAGE_SEPARATOR)
+      .map<TItem>((string) => JSON.parse(string));
   }
 
-  return noteArray;
+  return itemArray;
 };
 
-const addLocalStorageNote = (note: string) => {
-  const notes = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
-  if (notes) {
+const addLocalStorageNote = (item: TItem) => {
+  const items = localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY);
+  if (items) {
     localStorage.setItem(
       CONSTANTS.LOCAL_STORAGE_KEY,
-      `${notes}${CONSTANTS.LOCAL_STORAGE_SEPARATOR}${note}`
+      `${items}${CONSTANTS.LOCAL_STORAGE_SEPARATOR}${JSON.stringify(item)}`
     );
   } else {
-    localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY, note);
+    localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY, JSON.stringify(item));
   }
 };
 
-const removeLocalStorageNote = (note: string): string[] => {
-  const notes: string[] = getLocalStorageNotes();
-  const index: number = notes.indexOf(note);
-  notes.splice(index, 1);
+const removeLocalStorageNote = (note: string): TItem[] => {
+  const items: TItem[] = getLocalStorageNotes();
+  const index: number = items.map((item) => item.note).indexOf(note);
+  items.splice(index, 1);
   localStorage.setItem(
     CONSTANTS.LOCAL_STORAGE_KEY,
-    notes.join(CONSTANTS.LOCAL_STORAGE_SEPARATOR)
+    items
+      .map((item) => JSON.stringify(item))
+      .join(CONSTANTS.LOCAL_STORAGE_SEPARATOR)
   );
-  return notes;
+  return items;
 };
 
 export { getLocalStorageNotes, addLocalStorageNote, removeLocalStorageNote };
